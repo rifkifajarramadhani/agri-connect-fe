@@ -43,8 +43,18 @@ const Header = () => {
       </div>
 
       <div className="flex justify-between items-center gap-4">
-        <Bell color="beige" size={24} />
-        <Mail color="beige" size={24} />
+        <div className="relative">
+          <Bell color="beige" size={24} />
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+            3
+          </span>
+        </div>
+        <div className="relative">
+          <Mail color="beige" size={24} />
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+            3
+          </span>
+        </div>
         <div className="relative flex justify-between items-center gap-2">
           <img
             src="https://placehold.co/48?text=Me"
