@@ -3,13 +3,14 @@ import { Bell, Mail } from "lucide-react";
 import Search from "../components/Search";
 import Navigation from "./header/Navigation";
 import Account from "./header/Account";
+import { Link } from "@tanstack/react-router";
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center p-4 gap-12 border border-b-gray-200">
-      <a href="/">
+    <header className="flex justify-between items-center p-4 border border-b-gray-200">
+      <Link to="/">
         <img src={logo} alt="Agri Connect logo" width={48} height={48} />
-      </a>
+      </Link>
 
       <Search />
 

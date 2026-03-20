@@ -11,6 +11,7 @@ import {
 import useAuthStore from "@/store/auth-store";
 import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 
 const Account = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -45,9 +46,9 @@ const Account = () => {
           {!isLoggedIn ? (
             <DropdownMenuGroup>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuItem>
-                <a href="/login">Log In</a>
-              </DropdownMenuItem>
+              <Link to="/login">
+                <DropdownMenuItem>Login</DropdownMenuItem>
+              </Link>
             </DropdownMenuGroup>
           ) : (
             <>
