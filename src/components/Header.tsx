@@ -12,39 +12,47 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 
 const Header = () => {
+  type links = {
+    name: string;
+    href: string;
+  };
+  const navLinks: links[] = [
+    { name: "Home", href: "#" },
+    { name: "Network", href: "#" },
+    { name: "Marketplace", href: "#" },
+    { name: "Forum", href: "#" },
+  ];
+
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   return (
     <header className="bg-brand-green flex justify-between items-center p-4">
-      <img src={logo} alt="Agri Connect logo" width={48} height={48} />
+      <a href="/">
+        <img src={logo} alt="Agri Connect logo" width={48} height={48} />
+      </a>
 
-      <nav>
-        <ul className="flex space-x-4">
-          <li>
-            <a href="#" className="text-beige hover:text-green-500">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-beige hover:text-green-500">
-              Network
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-beige hover:text-green-500">
-              Marketplace
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-beige hover:text-green-500">
-              Forum
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <NavigationMenu>
+        <NavigationMenuList>
+          {navLinks.map((link) => (
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild key={link.name}>
+                <a href={link.href} className="text-beige text-sm font-medium">
+                  {link.name}
+                </a>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
 
       <div>
         <Search />
