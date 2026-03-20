@@ -1,6 +1,5 @@
 import { useForm } from "@tanstack/react-form";
 import { FieldInfo } from "./FieldInfo";
-import { Input } from "./ui/input";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import { SearchIcon } from "lucide-react";
 
