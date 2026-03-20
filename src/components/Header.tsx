@@ -2,12 +2,20 @@ import logo from "../assets/logo-white.png";
 import { Bell, ChevronDown, ChevronUp, Mail } from "lucide-react";
 import Search from "./Search";
 import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "./ui/button";
 
 const Header = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const toggleProfileMenu = () => {
-    setIsProfileMenuOpen((prev) => !prev);
-  };
 
   return (
     <header className="bg-brand-green flex justify-between items-center p-4">
@@ -65,31 +73,40 @@ const Header = () => {
             <span className="text-beige text-sm">John Doe</span>
             <span className="text-beige text-sm">Farmer</span>
           </div>
-          {isProfileMenuOpen ? (
-            <ChevronDown
-              onClick={toggleProfileMenu}
-              color="beige"
-              size={16}
-              className="cursor-pointer"
-            />
-          ) : (
-            <ChevronUp
-              onClick={toggleProfileMenu}
-              color="beige"
-              size={16}
-              className="cursor-pointer"
-            />
-          )}
-
-          <div
-            className={`absolute bg-brand-green -bottom-16 text-beige rounded-md p-2 w-full transition-all duration-300 ease-in-out ${
-              isProfileMenuOpen
-                ? "opacity-100 translate-y-0 pointer-events-auto"
-                : "opacity-0 -translate-y-2 pointer-events-none"
-            }`}
+          <DropdownMenu
+            open={isProfileMenuOpen}
+            onOpenChange={setIsProfileMenuOpen}
           >
-            Profile
-          </div>
+            <DropdownMenuTrigger asChild>
+              <Button variant="link" size="sm" className="ml-2">
+                {isProfileMenuOpen ? (
+                  <ChevronUp color="beige" size={16} />
+                ) : (
+                  <ChevronDown color="beige" size={16} />
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-40" align="start">
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  Profile
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Settings
+                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  Log out
+                  <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
