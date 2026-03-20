@@ -13,6 +13,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-form": "^1.28.5",
+    "@tanstack/react-router": "^1.167.5",
     "axios": "^1.13.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
